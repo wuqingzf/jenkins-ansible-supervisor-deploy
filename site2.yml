@@ -1,0 +1,19 @@
+---
+# This playbook deploys a simple standalone Tomcat 8 server. 
+
+- hosts: '{{target_host}}'
+  user: root
+  vars: 
+    jdk_version: java-1.8.0-openjdk
+    tomcat_mirrors: http://mirrors.hust.edu.cn/apache
+    tomcat_major_version: tomcat-8
+    tomcat_version: 8.5.30
+    #supervisord_conf_path: /opt/python27env/supervisor/conf.d
+    #ansible_python_interpreter: /opt/python27env/bin/python
+    tomcat_group: www
+    tomcat_user: www
+  roles:
+#    - selinux
+    - jdk
+    - tomcat
+    - deploy-war
